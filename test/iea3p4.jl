@@ -130,12 +130,12 @@ Fx_b3_locs = data[id_b3_Fx:id_b3_Fx+n_elems,:]
 Fy_b3_locs = data[id_b3_Fy:id_b3_Fy+n_elems,:]
 
 # Reinterpolate onto the mid-sections
-Fx_b1 = Array{Float64}(undef, 29, 6001)
-Fx_b2 = Array{Float64}(undef, 29, 6001)
-Fx_b3 = Array{Float64}(undef, 29, 6001)
-Fy_b1 = Array{Float64}(undef, 29, 6001)
-Fy_b2 = Array{Float64}(undef, 29, 6001)
-Fy_b3 = Array{Float64}(undef, 29, 6001)
+Fx_b1 = Array{Float64}(undef, length(chord), length(time))
+Fx_b2 = Array{Float64}(undef, length(chord), length(time))
+Fx_b3 = Array{Float64}(undef, length(chord), length(time))
+Fy_b1 = Array{Float64}(undef, length(chord), length(time))
+Fy_b2 = Array{Float64}(undef, length(chord), length(time))
+Fy_b3 = Array{Float64}(undef, length(chord), length(time))
 for j in axes(Fx_b1_locs, 2)
     itp = LinearInterpolation(RSpn, Fx_b1_locs[:, j], extrapolation_bc=Line())  
     Fx_b1[:, j] = itp(radii)
